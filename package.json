@@ -1,0 +1,41 @@
+{
+	"name": "k-oddress",
+	"version": "1.0.0",
+	"description": "Address finder for Koreans",
+	"scripts": {
+		"build": "nest build",
+		"start": "nest start",
+		"start:dev": "nest start --watch",
+		"start:debug": "nest start --debug --watch",
+		"prepare": "ts-patch install && typia patch"
+	},
+	"dependencies": {
+		"@nestia/core": "^4.6.1",
+		"@nestia/e2e": "^0.7.0",
+		"@nestia/fetcher": "^4.6.1",
+		"@nestia/sdk": "^4.6.1",
+		"@nestjs/common": "^11.0.3",
+		"@nestjs/config": "^4.0.0",
+		"@nestjs/core": "^11.0.3",
+		"@nestjs/platform-express": "^11.0.3",
+		"@nestjs/swagger": "^11.0.2",
+		"@nestjs/testing": "^11.0.3",
+		"@prisma/adapter-pg": "^6.2.1",
+		"@prisma/client": "^6.2.1",
+		"db": "file:node_modules/.prisma/client",
+		"pg": "^8.13.1",
+		"typia": "^7.6.0"
+	},
+	"devDependencies": {
+		"@brakebein/prisma-generator-nestjs-dto": "^1.24.1",
+		"@nestia/benchmark": "^0.3.0",
+		"@types/node": "^18.19.71",
+		"nestia": "^6.3.1",
+		"prisma": "^6.1.0",
+		"ts-node": "^10.9.2",
+		"ts-patch": "^3.3.0",
+		"tsx": "^4.19.2",
+		"typescript": "~5.7.2",
+		"typescript-transform-paths": "^3.5.3"
+	}
+}

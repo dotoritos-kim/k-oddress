@@ -1,0 +1,90 @@
+generator client {
+    provider        = "prisma-client-js"
+    output          = "../node_modules/.prisma/client"
+    log             = ["query", "info", "warn", "error"]
+}
+generator nestjsDto {
+  provider = "prisma-generator-nestjs-dto"
+  output = "../src/dto"
+  outputToNestJsResourceStructure = "true"
+  fileNamingStyle = "camel"
+  classValidation = "false"
+  showDefaultValues = "true"
+  prettier = "true"
+  definiteAssignmentAssertion = "true"
+}
+datasource db {
+    provider   = "postgresql"
+    url        = env("DATABASE_URL")
+}
+
+model additional_information {
+    additional_information_id                                                                      String                    @id @db.VarChar(25)
+    administrative_district_code                                                                   String?                   @db.VarChar(10)
+    administrative_district_name                                                                   String?                   @db.VarChar(20)
+    postal_code                                                                                    String?                   @db.VarChar(5)
+    postal_code_serial_number                                                                      String?                   @db.VarChar(3)
+    bulk_delivery_point_name                                                                       String?                   @db.VarChar(40)
+    building_registry_building_name                                                                String?                   @db.VarChar(40)
+    sigungu_building_name                                                                          String?                   @db.VarChar(40)
+    multi_unit_housing_status                                                                      String?                   @db.VarChar(1)
+    
+    @@map("address.additional_information")
+}
+
+model road_address {
+    road_address_id                                                            String                    @id @db.VarChar(25)
+    road_name_code                                                             String?                   @db.VarChar(12)
+    admin_division_serial_number                                               String?                   @db.VarChar(2)
+    underground_YN                                                             String?                   @db.VarChar(1)
+    main_building_number                                                       String?                   @db.VarChar(5)
+    sub_building_number                                                        String?                   @db.VarChar(5)
+    fundamental_district_number                                                String?                   @db.VarChar(5)
+    change_reason_code                                                         String?                   @db.VarChar(2)
+    abolition_date                                                             String?                   @db.VarChar(8)
+    previous_road_name_address                                                 String?                   @db.VarChar(25)
+    detail_address_assignment_YN                                               String?                   @db.VarChar(1)
+    
+    @@map("address.road_address")
+}
+
+model road_code {
+    road_code_id                                                                                               String                    @db.VarChar(12)
+    road_name                                                                                                  String?                   @db.VarChar(80)
+    road_name_roman                                                                                            String?                   @db.VarChar(80)
+    admin_division_serial_number                                                                               String                    @db.VarChar(2)
+    province_name                                                                                              String?                   @db.VarChar(20)
+    province_name_roman                                                                                        String?                   @db.VarChar(40)
+    district_name                                                                                              String?                   @db.VarChar(20)
+    district_name_roman                                                                                        String?                   @db.VarChar(40)
+    town_name                                                                                                  String?                   @db.VarChar(20)
+    town_name_roman                                                                                            String?                   @db.VarChar(40)
+    town_classification                                                                                        String?                   @db.VarChar(1)
+    town_code                                                                                                  String?                   @db.VarChar(10)
+    usage_YN                                                                                                   String?                   @db.VarChar(1)
+    change_reason                                                                                              String?                   @db.VarChar(1)
+    change_history                                                                                             String?                   @db.VarChar(14)
+    notification_date                                                                                          String?                   @db.VarChar(8)
+    cancellation_date                                                                                          String?                   @db.VarChar(8)
+
+    @@id([road_code_id, admin_division_serial_number])
+    
+    @@map("address.road_code")
+}
+
+model street_number {
+    street_number_id                                                                           String                    @db.VarChar
+    serial_number                                                                              String                    @db.VarChar
+    legal_district_code                                                                        String?                   @db.VarChar
+    province_name                                                                              String?                   @db.VarChar
+    district_name                                                                              String?                   @db.VarChar
+    legal_town_name                                                                            String?                   @db.VarChar
+    legal_village_name                                                                         String?                   @db.VarChar
+    mountain_YN                                                                                String?                   @db.VarChar
+    land_lot_main_number                                                                       String?                   @db.VarChar
+    land_lot_sub_number                                                                        String?                   @db.VarChar
+    representative_YN                                                                          String?                   @db.VarChar
+    
+    @@id([street_number_id, serial_number])
+    @@map("address.street_number")
+}
