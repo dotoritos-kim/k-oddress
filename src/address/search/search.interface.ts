@@ -23,34 +23,34 @@ export interface IPagination {
 }
 export interface RoadCode {
 	road_code_id: string;
-	road_name?: string;
-	road_name_roman?: string;
-	town_name?: string;
-	town_name_roman?: string;
-	province_name?: string;
-	district_name?: string;
+	road_name?: string | null;
+	road_name_roman?: string | null;
+	town_name?: string | null;
+	town_name_roman?: string | null;
+	province_name?: string | null;
+	district_name?: string | null;
 }
 
 export interface RoadAddress {
-	road_address_id: string;
-	main_building_number?: string;
-	sub_building_number?: string;
+	road_address_id: string | null;
+	main_building_number?: string | null;
+	sub_building_number?: string | null;
 }
 
 export interface StreetNumber {
-	street_number_id: string;
-	serial_number?: string;
-	legal_town_name?: string;
-	legal_village_name?: string;
-	land_lot_main_number?: string;
-	land_lot_sub_number?: string;
+	street_number_id: string | null;
+	serial_number?: string | null;
+	legal_town_name?: string | null;
+	legal_village_name?: string | null;
+	land_lot_main_number?: string | null;
+	land_lot_sub_number?: string | null;
 }
 
 export interface AdditionalInformation {
-	additional_information_id: string;
-	administrative_district_name?: string;
-	building_registry_building_name?: string;
-	sigungu_building_name?: string;
+	additional_information_id: string | null;
+	administrative_district_name?: string | null;
+	building_registry_building_name?: string | null;
+	sigungu_building_name?: string | null;
 }
 
 export interface AddressResult {
